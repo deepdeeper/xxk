@@ -1,0 +1,218 @@
+@charset "utf-8";
+/*----------------------public style----------------------*/
+* {
+	margin:0;
+	padding:0;
+	list-style:none;
+	font-size:12px;
+}
+/*屏蔽IE6自动x抽滚动*/
+html {
+	_overflow-y:scroll;
+}
+/*屏蔽IE6自动x抽滚动*/
+/*去除A标签点击之后的虚线*/
+a {outline: none;}
+a:active {star:expression(this.onFocus=this.blur());}/*只IE识别*/
+:focus { outline:0; }
+/*去除A标签点击之后的虚线*/
+img{
+	border:0;
+}
+.alignLeft {
+	text-align:left;
+}
+.alignCenter {
+	text-align:center;
+}
+.alignRight {
+	text-align:right;
+}
+input {
+	margin:0;
+	padding:0;
+}
+table {
+	width:100%;
+	border-collapse:collapse;
+}
+td {
+	border-collapse:collapse;
+}
+a {
+	color: #000;
+	text-decoration: none;
+}
+a:hover {
+	color: red;
+}
+/*----------------------list style----------------------*/
+body {
+	/*background:url(../../images/main/article.png) right top repeat-y;
+	padding-right:4px;*/
+	text-align:center;
+	font-size:12px;
+}
+/*当前位置*/
+.position {
+	background:url(../../images/main/position.png) left bottom repeat-x;
+	height:31px;
+	line-height:31px;
+	padding-left:10px;
+	text-align:left;
+	color:#999;
+}
+
+/*主DIV*/
+.mainBox {
+	margin:0 auto;
+	text-align:left;
+	padding:5px;
+}
+
+/*搜索*/
+.searchTxt {
+	width:120px;
+	font-size:12px;
+	height:14px;
+	line-height:14px;
+	color:#999;
+	margin-right:10px;
+}
+.searchBg {
+	background-color: #f3f9fc;
+	vertical-align: bottom;
+	text-align: left;
+}
+.searchBox {
+	padding:5px 0px 10px 0px;
+}
+.searchBox label{
+	padding-right: 10px;
+}
+
+
+/*两种按钮，一种系统默认，一种审核按钮*/
+.btnAll {
+	padding:1px 1px;
+	vertical-align:middle;
+	cursor:pointer;
+	height: 22px;
+}
+.btnAll2 {
+	background:url(../../images/main/btnTable.png) left top no-repeat;
+	width:82px;
+	height:19px;
+	line-height:19px;
+	text-align:center;
+	vertical-align:middle;
+	cursor:pointer;
+	margin-left:5px;
+	border: none;
+}
+
+
+/*列表Table*/
+table.borderTable,table.borderTable tr td {
+	border:1px #CCC solid;
+	border-collapse:collapse;
+}
+table.borderTable tr td {
+	padding: 0px 5px;
+	height: 23px;
+	line-height:23px;
+	text-align:center;
+	vertical-align: middle;
+}
+/*普通查询Table*/
+table.borderTable2,table.borderTable2 tr td {
+	border: 1px #CCC solid;
+	border-collapse: collapse;
+}
+table.borderTable2 tr td {
+	padding: 0px 5px;
+	height: 26px;
+	line-height:26px;
+	text-align: left;
+}
+/*无边框Table*/
+/*指定td没有border-bottom: none;border-right: none;完成*/
+table.borderTable3,table.borderTable3 tr td {
+	border:none;
+	border-collapse: collapse;
+}
+table.borderTable3 tr td {
+	border-bottom: 1px #CCC solid;
+	border-right: 1px #CCC solid;
+	padding: 0px 5px;
+	height: 26px;
+	line-height:26px;
+	text-align: left;
+}
+
+.redLabel {
+	color: #F00;
+}
+
+
+/*tr,td的背景颜色*/
+.btnBg {
+	background:url(../../images/main/listTitle.png) left top repeat-x;
+	height:21px;
+}
+.btnBg2 {
+	background:url(../../images/main/listTitle.png) left top repeat-x;
+	height:21px;
+	border-top:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+	text-align: left;
+	vertical-align: middle;
+	padding: 3px 3px 0px 3px;
+}
+.theadBg {
+	background:url(../../images/main/listHead.png) left top repeat-x #e9e9e9;
+}
+
+
+/*增加，删除，修改等文字按钮*/
+.btnTxt {
+	color:#19a5e9;
+	text-decoration:underline;
+	cursor:pointer;
+	border:0;
+	background:none;
+}
+
+/*列表页，信息渐变显示*/
+.tdBg {
+	background:#f1f6f9;
+}
+.tdBgHover {
+	background:#FBFBFB;
+}
+
+/*分页*/
+.pageDiv{
+	text-align:right;
+	color:#666;
+	padding:5px;
+	border-bottom:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+}
+.pageContent{
+	padding:2px;
+}
+.pageBtn{
+	margin:0px;
+	padding:0px;
+	background:#19a5e9;
+	height:18px;
+	text-align:center;
+	line-height:18px;
+	cursor:pointer;
+	border:1px #0e557a solid;
+	margin-left:5px;
+	font-size:12px;
+}

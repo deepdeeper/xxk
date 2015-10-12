@@ -1,0 +1,171 @@
+package com.lzzyyy.xxk.user.web.struts2.action;
+
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+
+import com.lzzyyy.xxk.user.pojo.User;
+import com.lzzyyy.xxk.user.pojo.UserTeam;
+import com.lzzyyy.xxk.user.service.UserService;
+import com.lzzyyy.xxk.user.service.UserTeamService;
+import com.lzzyyy.xxk.user.utils.PromptUtil;
+
+public class UserAction extends BaseAction {
+	private UserService userService;
+	private UserTeamService teamService;
+	private User user;
+	private UserTeam team;
+	private String teamName;
+	private List<UserTeam> teams;
+	
+
+	public String getTeamName() {
+		return teamName;
+	}
+
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+
+	public UserTeam getTeam() {
+		return team;
+	}
+
+	public void setTeam(UserTeam team) {
+		this.team = team;
+	}
+
+	public List<UserTeam> getTeams() {
+		return teams;
+	}
+
+	public void setTeams(List<UserTeam> teams) {
+		this.teams = teams;
+	}
+
+	public UserTeamService getTeamService() {
+		return teamService;
+	}
+
+	public void setTeamService(UserTeamService teamService) {
+		this.teamService = teamService;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+	public String toAddUser() {
+		List<UserTeam> teams = this.frindAllTeam();
+		this.setTeams(teams);
+		return "toAddUser";
+
+	}
+
+	/**
+	 * 生成对话框并跳转到设定的URL
+	 * 
+	 * @param message
+	 * @param url
+	 */
+	public void print(String message, String url) {
+		try {
+			PromptUtil.print(getResponse(), message, url);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String deleteUser() {
+
+		return "";
+	}
+
+	public String longin() {
+		User u = userService.frindByUserId(user);
+		String vCodeInSession  = (String) getRequest().getSession().getAttribute("validateCode");//画出验证码的同时验证码被存入session
+		String vCodeInPageSubmit = getRequest().getParameter("validateCode");//用户提交的验证码
+	
+		if (null != u&&vCodeInSession.equals(vCodeInPageSubmit)) {
+
+			return "sucsess";
+		} else {
+
+			return "fail";
+		}
+
+	}
+
+	/**
+	 * 查到所有的用户分组
+	 * 
+	 * @return
+	 */
+	public List<UserTeam> frindAllTeam() {
+
+		return teamService.findAllTeam();
+	}
+   public UserTeam findTeam(){
+	 UserTeam ut =   teamService.findTime(this.getTeamName());
+	   return ut;
+   }
+	/**
+	 * 添加一个用户
+	 * 
+	 * @return
+	 */
+	public void addUser() {
+		try {
+			User u= new User();
+			User voU = this.getUser();//从页面拿到的user
+			u.setAddDate(new Date());
+		
+			u.setRemark(voU.getRemark());
+			u.setUserName(voU.getUserName());
+			u.setUserRealName(voU.getUserRealName());
+		    UserTeam team=null;
+			team =findTeam();
+			if(null!=team){
+				u.setTeam(team);
+				userService.addUser(u);
+				this.print("添加用户成功", "user/userInfo_toAddUser.action");
+			}else{
+				
+				this.print("添加失败", "user/userInfo_toAddUser.action");
+			}
+		
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

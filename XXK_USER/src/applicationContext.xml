@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+	</bean>
+ <bean id="transactionmanager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+ 
+
+	<!-- 配置传播特性 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionmanager">
+		<tx:attributes>
+			<!--  
+				<tx:method name="insert*" propagation="REQUIRED" />
+				<tx:method name="add*" propagation="REQUIRED" />
+				<tx:method name="save*" propagation="REQUIRED" />
+				<tx:method name="modify*" propagation="REQUIRED" />
+				<tx:method name="update*" propagation="REQUIRED" />
+				<tx:method name="delete*" propagation="REQUIRED" />
+				<tx:method name="batch*" propagation="REQUIRED" />
+				<tx:method name="login*" propagation="REQUIRED"/>
+				<tx:method name="*" read-only="true"/>
+			-->
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+
+	<!-- 配置事务关联包 -->
+	<aop:config>
+		<aop:pointcut id="allServiceMethod"
+			expression="execution(* com.lzzyyy.xxk.user.service.*.*(..))" />
+		<aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice" />
+	</aop:config>
+
+	<!-- 事务配置 -->
+
+	<!-- userAcion -->
+	<!-- 配置ACTION中用的到接口的引用 -->
+	<!-- 配置dao的具体实现 -->
+	<bean id="userDao" class="com.lzzyyy.xxk.user.dao.impl.UserDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- 配置service中使用到的具体实现以及属性对应的应用 -->
+	<bean id="userService" class="com.lzzyyy.xxk.user.service.impl.UserServiceImpl">
+		<property name="userDao">
+			<ref bean="userDao" />
+		</property>
+			<property name="teamDao">
+			<ref bean="userTeamDao" />
+		</property>
+	</bean>
+
+	<bean class="com.lzzyyy.xxk.user.web.struts2.action.UserAction"
+		scope="prototype">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+		<property name="teamService">
+			<ref bean="userTeamService" />
+		</property>
+	</bean>
+	
+	<!-- userAcion -->
+	<!-- userTeam at -->
+	<bean id="userTeamDao" class="com.lzzyyy.xxk.user.dao.impl.UserTeamDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- 配置service中使用到的具体实现以及属性对应的应用 -->
+	<bean id="userTeamService" class="com.lzzyyy.xxk.user.service.impl.UserTeamService">
+		<property name="stDao">
+			<ref bean="userTeamDao" />
+		</property>
+	</bean>
+
+	<!-- userTeam end -->
+
+
+
+
+
+</beans>

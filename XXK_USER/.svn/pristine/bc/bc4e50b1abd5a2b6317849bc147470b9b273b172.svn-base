@@ -1,0 +1,238 @@
+<%@page contentType="text/html; charset=utf-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+	if (session.getAttribute("sysUser") != null) {
+		response.sendRedirect(basePath + "jsp/frame/index.jsp");
+	} else {
+		Cookie[] cks = request.getCookies();
+		if (cks != null) {
+			for (Cookie c : cks) {
+				if ("egssUsername".equalsIgnoreCase(c.getName())) {
+					for (Cookie c2 : cks) {
+						if ("egssPwd".equalsIgnoreCase(c2.getName())) {
+							response
+									.sendRedirect(basePath
+											+ "loginAction!loginByCookie.action?username="
+											+ c.getValue()
+											+ "&password="
+											+ c2.getValue());
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<base href="<%=basePath%>" />
+		<title>泸州市电子政务内网平台--用户管理系统</title>
+		<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	padding-top: 100px;
+}
+
+.mainLogin {
+	background: url(images/login/mainLogin.png) left center no-repeat;
+	width: 1000px;
+	height: 400px;
+	margin: 0 auto;
+}
+
+.table {
+	padding-left: 730px;
+	padding-top: 120px;
+	font-size: 12px;
+}
+
+.table table tr td {
+	padding: 5px 3px;
+}
+
+.btn {
+	background: url(images/login/tbn.png) left top no-repeat;
+	width: 60px;
+	height: 21px;
+	line-height: 21px;
+	text-align: center;
+	cursor: pointer;
+	border: 0;
+}
+</style>
+		<script type="text/javascript">
+		//监听enter事件
+		if(document.addEventListener){//如果是Firefox
+			document.addEventListener("keypress",fireFoxHandler, true);
+		}else{
+			document.attachEvent("onkeypress",ieHandler);
+		}
+		function fireFoxHandler(evt){
+			if(evt.keyCode==13){
+		 		validate();
+			}
+		}
+		function ieHandler(evt){
+			if(evt.keyCode==13){
+			  validate();
+			}
+		}
+		
+	   	
+	   	function G(a){
+	   		return document.getElementById(a);
+	   	}
+	  	function refreash() {
+	  		G('username').value='';
+		  	G('username').focus();
+		  	G('password').value='';
+		  	G('validateCodeImg').src='login/loginImage.jsp?now=' + new Date();;
+	  	} 
+	   function validate(){
+	   		var username = G("username").value;
+  			var password = G("password").value;
+ 			var validateCode = G("validateCode").value;
+ 			
+	 		if(isRegisterUserName(username) && isRegisterPassword(password) && isValidateCode(validateCode)){
+	 			G("login").submit();
+	 		}
+	  		return false;
+ 		}
+		function isRegisterUserName(u){
+		   	 var patrn=/^([\w -_]){2,20}$/;   
+			 if (!patrn.exec(u)){
+			  	 G("username").value = "";
+			  	 G("password").value = "";
+				 alert("用户名格式不对");
+				 return false;  
+			  }
+			 return true;  
+		}
+	   function isRegisterPassword(p){
+	   	 var patrn=/^[\w!@#$%^&*]{6,20}$/;   
+		 if (!patrn.exec(p)){
+		 	 G("password").value = "";
+		 	 alert("密码格式不对");
+		 	 G("password").focus();
+			 return false;  
+		 }
+		 return true;  
+	   }
+	    function isValidateCode(v){
+	   	 var patrn=/^[a-zA-Z0-9]{4}$/;   
+		 if (!patrn.exec(v)){
+			alert("验证码格式不对");
+			G("validateCode").focus();
+			return false;  
+		 }
+		 	return true;  
+	   }
+	   
+	   function init() {
+	   		var username = G('username').value;
+	   		if(username==""){
+	   			G('username').value='';
+	   			G('username').focus();
+	   		}
+	   		G("password").value="";
+	   		G("validateCode").value="";
+	  }
+	  function init2(username,password){
+	  	G('username').value=username;
+	  	G('password').value=password;
+	  	G("validateCode").focus();
+	  }
+	</script>
+	</head>
+
+	<body onload="init()">
+		<!-- 
+		<table border="0" cellpadding="0" cellspacing="0" style="text-align: center; width: 100%;">
+			<tr>
+				<td>
+					<a href="javascript:init2('admin1','xcp12300')">超级管理员</a>&nbsp;&nbsp;
+					<a href="javascript:init2('510502','test123')">区说管理员</a>&nbsp;&nbsp;
+					<a href="javascript:init2('lzswjyj','test123')">单位管理员</a>&nbsp;&nbsp;
+					<a href="javascript:init2('lzswjyj-zhk','test123')">部门管理员</a>&nbsp;&nbsp;
+					<a href="javascript:init2('xianyf','test123')">个人用户</a>&nbsp;&nbsp;
+				</td>
+			</tr>
+		</table>
+		 -->
+		<form action="loginAction!login.action" id="login" method="post"
+			onsubmit="return validate()">
+			<div class="mainLogin">
+				<div class="table">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td>
+								用户名：
+							</td>
+							<td>
+								<input name="sysUserVo.userName" id="username" type="text"
+									style="width: 130px;" maxlength="20" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								密&nbsp;&nbsp;
+								<!--[if IE 6]>&nbsp;&nbsp;<![endif]-->
+								<!--[if IE 7]>&nbsp;&nbsp;<![endif]-->
+								<!--[if IE 8]>&nbsp;&nbsp;<![endif]-->
+								码：
+							</td>
+							<td>
+								<input name="sysUserVo.userPwd" id="password" type="password"
+									style="width: 130px;" maxlength="20" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								验证码：
+							</td>
+							<td>
+								<input name="validateCode" id="validateCode" type="text"
+									style="width: 46px;" maxlength="4"
+									onkeyup="this.value=this.value.replace(/\D/g,'')"
+									onafterpaste="this.value=this.value.replace(/\D/g,'')" />
+								<img src="login/loginImage.jsp" id="validateCodeImg"
+									class="mini" width="78" height="21"
+									style="vertical-align: middle" />
+							</td>
+						</tr>
+						<tr style="height: 10px">
+							<td colspan="3">
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" name="remember" value="1"
+									checked="checked" />
+								<font color="#000" size="2">记住密码</font>
+							</td>
+							<td>
+								<input name="" type="button" onclick="validate()" class="btn"
+									value="登 录" />
+								<!--[if IE 6]>&nbsp;&nbsp;<![endif]-->
+								&nbsp;
+								<input name="" type="button" onclick="refreash()" class="btn"
+									value="重 置" />
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,11 @@
+package com.lzzyyy.xxk.user.service;
+
+import com.lzzyyy.xxk.user.pojo.User;
+
+public interface UserService {
+    
+	public User frindByUserId(User user);
+	public void addUser(User user);
+	public void  deleteUser(User user);
+	
+}

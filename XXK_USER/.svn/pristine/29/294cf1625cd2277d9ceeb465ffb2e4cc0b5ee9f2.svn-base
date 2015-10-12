@@ -1,0 +1,52 @@
+package com.lzzyyy.xxk.user.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.lzzyyy.xxk.user.dao.UserDao;
+import com.lzzyyy.xxk.user.pojo.User;
+import com.lzzyyy.xxk.user.service.UserService;
+
+public class UserServiceImpl implements UserService {
+	private UserDao userDao;
+
+	public UserDao getUserDao() {
+		return userDao;
+	}
+
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
+	public User frindByUserId(User user) {
+	       System.out.println("name ="+user.getUserName());
+	       System.out.println("pwd ="+user.getUserPwd());
+         User u = userDao.findUniqueByHql("from User as u where u.userName =? and u.userPwd =?",new Object[]{user.getUserName(),user.getUserPwd()});
+		try {
+		
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return u ;
+	}
+
+	public void addUser(User user) {
+		try {
+		  
+			userDao.saveOrUpdate(user);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	
+
+	public void deleteUser(User user) {
+		
+		
+	}
+
+}

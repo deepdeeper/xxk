@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.lzzyyy.xxk.user.pojo.SysMenu" table="Sys_menu">
+        <id name="menuId" type="string" column="menuId" length="32">
+            <generator class="uuid" />
+        </id>
+        <property name="menuName" type="string">
+            <column name="Menu_Name" length="50" not-null="true" unique="true"/>
+        </property>
+        <property name="menuUrl" type="string">
+            <column name="menuUrl" length="200" />
+        </property>
+        <property name="menuPic" type="string">
+        	<column name="menuPic" length="50"></column>
+        </property>
+        <property name="menuLevel" type="integer">
+            <column name="menuLevel"  not-null="true" />
+        </property>
+        <property name="menuDisplayLevel" type="integer">
+            <column name="menuDisplayLevel"/>
+        </property>
+        <property name="remark" type="string">
+            <column name="remark" length="200" />
+        </property>
+     
+     
+     
+        <!-- 设置本菜单父类菜单 -->
+        <many-to-one name="parentMenu" cascade="save-update">
+        	<column name="parentMenuId" length="32" />
+        </many-to-one>
+        
+        <!-- 本菜单的所有子菜单,当删除本菜单时级联删除所有子类菜单 -->
+         <set name="chlidMenus"  inverse="true" lazy="extra" cascade="all">
+        	<key>
+        		<column name="parentMenuId" length="32"/>
+        	</key>
+        	<one-to-many class="com.lzzyyy.xxk.user.pojo.SysMenu"/>
+        </set>
+        
+        <!-- 反应一个菜单可以被多个角色使用 -->
+        <set name="roles"  table="Sys_PG_Menu"  inverse="false" lazy="extra" cascade="save-update">
+            <key>
+                <column name="menuId" length="32" />
+            </key>
+            <many-to-many class="com.lzzyyy.xxk.user.pojo.SysRole">
+            	 <column name="roleId" length="32" />
+            </many-to-many>
+        </set>
+        
+      
+    </class>
+</hibernate-mapping>

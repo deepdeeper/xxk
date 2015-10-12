@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.lzzyyy.xxk.user.pojo.UserTeam" table="user_team">
+        <id name="teamId" type="string" column="teamId" >
+            <generator class="uuid" />
+        </id>
+        <property name="teamName" type="string">
+            <column name="teamName" length="30" not-null="true" />
+        </property>
+        
+      
+        <property name="teamRemark" type="string">
+            <column name="teamRemark" length="200" />
+        </property>
+        
+        <set name="users" inverse="true" lazy="extra" cascade="save-update">
+			<key>
+				<column name="teamId" length="32" />
+			</key>
+			<one-to-many class="com.lzzyyy.xxk.user.pojo.User" />
+		</set>
+        
+        	 <many-to-one name="dept" cascade="save-update">
+            <column name="deptId"  />
+        </many-to-one>
+			
+      
+    </class>
+</hibernate-mapping>

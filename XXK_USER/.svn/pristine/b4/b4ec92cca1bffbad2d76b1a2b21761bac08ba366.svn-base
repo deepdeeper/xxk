@@ -1,0 +1,181 @@
+@charset "utf-8";
+
+body {
+font-size:12px;
+font-family:"宋体",Arial, Helvetica, sans-serif;
+}
+/*去除A标签点击之后的虚线*/
+a {outline: none;}
+a:active {star:expression(this.onFocus=this.blur());}/*只IE识别*/
+:focus { outline:0; }
+/*去除A标签点击之后的虚线*/
+*{ margin:0px;}
+a {
+	color: #344b50;
+	text-decoration:none;
+}
+a:hover {
+	color: #0099CC; 
+}
+.txt{ height:15px;}
+.hei_per{height:1px;line-height: 2px;}/* 分隔5像素 */
+.hei_per2{height:2px;line-height: 2px;}/* 分隔5像素 */
+.table{
+	 font-size:12px;
+	}
+
+.tit{background-color: #bfd4d8; text-align:center; font-weight:bold; font-size:14px; color:#444444; letter-spacing:15px;}
+
+.man_zone {
+	min-height: 100px;
+	width: 100%;
+	border: 1px solid #B4C9C6;
+	margin: 5px 0 0 5px;
+	background-color:#FFFFFF;
+	padding: 5px 0 5px 0;
+	overflow: auto;
+}
+.man_zone table{
+    background-color:#a8c7ce;
+}
+.man_zone table tr{
+    background-color:#fff;
+}
+
+.man_zone2{
+	font-size: 12px;
+}
+.man_zone2 table,.man_zone2 table tr td {
+	border:1px solid #a8c7ce;
+	border-collapse:collapse;
+}
+.man_zone2 table tr td{padding:3px 5px;}
+
+.left_title_1 {
+	background-color: #fff;
+	color:#000000;
+	font-size:12px;
+	line-height:20px;
+	text-align:left;
+	text-indent:40px;
+}
+.left_title_2 {
+	background-color: #fff;
+	color:#000000;
+	font-size:12px;
+	line-height:20px;
+	text-align:left;
+	text-indent:40px;
+}
+.left_title_4 {
+	background-color: #fff;
+	color:#627c78;
+	line-height:20px;
+	text-align:left;
+}
+.left_title_3 {	color:#627c78; text-align:left; text-indent:10px; font-weight:normal;}
+.left_title_5 {
+	background-color: #F3F8F7;
+	color:#627c78;
+	text-align:left; 
+	text-indent:10px;
+	font-size:18px;
+	font-weight:normal;
+}
+.left_title_7 {
+	color:#668D9A;
+	text-align:left; 
+	text-indent:10px;
+	font-size:18px;
+	font-weight:normal;
+}
+.left_title_6{
+	background-color: #fff;
+	font-size:14px;
+}
+/* 按钮 */
+.btn_all {
+	height:21px;
+	line-height:21px;
+	text-align:center;
+	font-size:12px;
+	color:#000;
+	background:url(../images/button/btn_all.gif) left top repeat-x;
+	border:1px solid #8fb9d0;
+	padding:0px 1px;;
+	vertical-align: top;
+	text-align:center;
+	cursor: pointer;
+	}
+/* 列表 */
+#man_list {
+	width: 100%;
+	margin: 10px 0px 5px 10px;
+	padding: 0px;
+	overflow: auto;
+}
+.tit_list{ height:24px;background-color: #d2e0f3; text-align:center; font-weight:bold; font-size:14px; letter-spacing:10px;}
+.tit_list2{ height:20px;background-color: #F3F8F7; text-align:center; font-weight:bold; font-size:12px; color:#444444; letter-spacing:2px;}
+.tit_list3{ height:15px;background-color: #F3F8F7; text-align:center; font-weight:bold; font-size:12px; color:#444444;}
+.tit_list4{ height:15px;text-align:center; font-weight:bold; font-size:20px; color:#444444;}
+.tit_list5{ height:20px;background-color: #F3F8F7; text-align:center; font-size:12px; color:#444444; }
+.tit_list6{ height:20px;text-align:left;text-indent:2em; font-size:15px; color:#444444; }
+
+.td_list {color: #344b50; font-size: 12px;font-weight:bold;  text-align:center;height:27px; }
+.td_list_info {color: #000000;font-size: 12px;text-align:center;height:25px;padding-left: 5px;}
+.link {
+	font-size: 12px;
+	color: #295568;
+}
+
+/* 切换式选项卡 */
+.menu div{ float:left; width:100px; height:20px; margin-right:2px;}
+.menu ul{list-style:none;}
+.menu li{list-style:none; cursor:pointer; display:inline;}
+.info{ border:1px solid #a8c7ce; width:99%; min-height:200px;clear:both; margin-top:-1px;padding-top:5px; padding-left:5px;padding-bottom:5px;}
+.over_li div, .out_li div { letter-spacing:1px;; border:1px #a8c7ce solid; background:#a8c7ce;float:left; text-align:center;padding-top:10px; }
+.over_li div {background-color:#83a6ae; border-bottom:none;}
+/* end-切换式选项卡  */
+
+/* 状态显示 */
+.s1{ color:#FF0000}
+
+
+
+/***/
+.bold{ font-weight:bold}
+
+
+.zt1{ font-weight:bold; float:left}
+.zt2{ float:left; width:60px;}
+.zt3{}
+
+.simg{ cursor:pointer}
+
+a.zq {
+	color:#1a5c7b;
+	text-decoration:none;
+}
+a.zq:hover {
+	color: #0099CC; 
+}
+.ylfButton {
+	BORDER-RIGHT: #ffffff 1px solid;
+	BORDER-TOP: #ffffff 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 12px;
+	BORDER-LEFT: #ffffff 1px solid;
+	COLOR: #ffffff;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: #ffffff 1px solid;
+	FONT-STYLE: normal;
+	WIDTH: 66px;
+	HEIGHT: 21px;
+	BACKGROUND-COLOR: #3f4751;
+	FONT-VARIANT: normal
+}
+
+.hei10{
+	height:10px;
+	
+}

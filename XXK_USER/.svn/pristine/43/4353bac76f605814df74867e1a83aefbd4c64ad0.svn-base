@@ -1,0 +1,47 @@
+package com.lzzyyy.xxk.user.service.impl;
+
+import com.lzzyyy.xxk.user.dao.UserDao;
+import com.lzzyyy.xxk.user.pojo.User;
+import com.lzzyyy.xxk.user.service.UserService;
+
+public class UserServiceImpl implements UserService {
+	private UserDao userDao;
+
+	public UserDao getUserDao() {
+		return userDao;
+	}
+
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
+	public User frindByUserId(User user) {
+         User u =null;
+		try {
+		//	u = userDao.get(User.class, user.getUserId());
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return u ;
+	}
+
+	public void addUser(User user) {
+		try {
+		  
+			userDao.saveOrUpdate(user);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	
+
+	public void deleteUser(User user) {
+		
+		
+	}
+
+}

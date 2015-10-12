@@ -1,0 +1,17 @@
+package com.lzzyyy.xxk.user.utils;
+
+public class Constant {
+    /**
+     * 当前用户
+     */
+	public static String  CURRENT_USER = "currentUser";
+	/**
+	 * cookie中保存的用户名
+	 */
+    public static String USER_NAME_IN_COOKIE="userName";
+    
+    /**
+     * cookie中保存的用户密码
+     */
+    public static String USER_PWD_IN_COOKIE="userPwd";
+}

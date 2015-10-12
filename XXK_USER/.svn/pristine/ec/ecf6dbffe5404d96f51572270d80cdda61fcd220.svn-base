@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+		<property name="connection.url">jdbc:mysql://localhost:3306/tms</property>
+		<property name="connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		<property name="connection.useUnicode">true</property>
+		<property name="connection.characterEncoding">UTF-8</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">xxk123</property>
+		<property name="dialect">
+		org.hibernate.dialect.MySQLDialect   
+		</property>
+		
+		<!-- C3P0连接池设定 -->
+		<property name="connection.provider_class">
+			org.hibernate.connection.C3P0ConnectionProvider
+		</property>
+		<property name="hibernate.c3p0.max_size">50</property>
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.timeout">3600</property>
+		<property name="hibernate.c3p0.max_statements">100</property>
+		<property name="hibernate.c3p0.idle_test_period">3000</property>
+		<property name="hibernate.c3p0.acquire_increment">5</property>
+		<property name="hibernate.connection.autocommit">true</property>
+		
+		<!-- 设置批量抓取数量 -->
+		<property name="hibernate.jdbc.batch_size">50</property>
+		<!-- 设置批量更新数量 -->
+		<property name="hibernate.jdbc.fetch_size">30</property>
+	
+		<!-- 显示sql语句 -->
+		<property name="show_sql">true</property>
+		<!-- 格式化sql语句 -->
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.order_updates">true</property>
+		<!-- 自动修改表 -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+    	
+    	   
+		 <mapping
+			resource="com/lzzyyy/xxk/user/pojo/User.hbm.xml" />
+			 	   
+		 <mapping
+			resource="com/lzzyyy/xxk/user/pojo/WorkRecord.hbm.xml" />
+		 <mapping
+			resource="com/lzzyyy/xxk/user/pojo/SysRole.hbm.xml" />
+			
+				 <mapping
+			resource="com/lzzyyy/xxk/user/pojo/UserTeam.hbm.xml" />
+			
+		 <mapping
+			resource="com/lzzyyy/xxk/user/pojo/SysMenu.hbm.xml" />
+		<!-- 映射文件 -->
+		<!-- <mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/UnitType.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/RegionCode.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/Profession.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/JobTitle.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/JobLevel.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/PortalSubSystem.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/SysRegion.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/SysDepartment.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/SysGroup.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/SysGroupMember.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/WaitAuditMember.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/SysMenu.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/SysRole.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/SysUser.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/SysUserBack.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/SysLog.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/SysMessage.hbm.xml" />
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/SysUnit.hbm.xml"/>
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/UserTransfer.hbm.xml"/>
+		<mapping
+			resource="cn/gov/luzhou/SiteServer/user/business/pojo/PartTime.hbm.xml"/> -->
+</session-factory>
+</hibernate-configuration>

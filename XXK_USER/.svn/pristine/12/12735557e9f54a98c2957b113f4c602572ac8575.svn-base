@@ -1,0 +1,8 @@
+package com.lzzyyy.xxk.user.dao;
+
+import com.lzzyyy.xxk.user.pojo.UserTeam;
+
+public interface UserTeamDao extends EntityDao<UserTeam, Integer> {
+	
+
+}

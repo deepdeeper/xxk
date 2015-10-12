@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.lzzyyy.xxk.user.pojo.WorkRecord"
+		table="work_record">
+		<id name="wrId" column="wrId">
+			<generator class="uuid"></generator>
+		</id>
+
+	
+		<property name="wrName" type="string"  not-null="true" length="32"></property>
+		<property name="wrRemark" type="string"  not-null="true" length="200"></property>
+		<property name="wrStTime" type="timestamp" ></property>
+		<property name="wrEndTime" type="timestamp" ></property>
+		
+		 <many-to-one name="user" cascade="save-update">
+            <column name="userId"  />
+        </many-to-one>
+			
+			
+			  
+      
+        
+     
+        
+	</class>
+
+</hibernate-mapping>

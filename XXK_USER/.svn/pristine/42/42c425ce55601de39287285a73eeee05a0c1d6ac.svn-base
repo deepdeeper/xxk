@@ -1,0 +1,278 @@
+@charset "utf-8";
+/* CSS Document */
+/*----------------------public style----------------------*/
+* {
+	margin:0;
+	padding:0;
+	list-style:none;
+	font-size:12px;
+	vertical-align: middle;
+}
+/*屏蔽IE6自动x抽滚动*/
+html {
+	_overflow-y:scroll;
+}
+/*屏蔽IE6自动x抽滚动*/
+/*去除A标签点击之后的虚线*/
+a {outline: none;}
+a:active {star:expression(this.onFocus=this.blur());}/*只IE识别*/
+:focus { outline:0; }
+/*去除A标签点击之后的虚线*/
+img {
+	border:0;
+}
+.alignLeft {
+	text-align:left;
+}
+.alignCenter {
+	text-align:center;
+}
+.alignRight {
+	text-align:right;
+}
+input {
+	margin:0;
+	padding:0;
+}
+table {
+	width:100%;
+	border-collapse:collapse;
+}
+td {
+	border-collapse:collapse;
+}
+a {
+	color: red;
+	text-decoration: none;
+}
+a:hover {
+	color: red;
+}
+/*----------------------content style----------------------*/
+body {
+	/*background:url(../../images/main/article.png) right top repeat-y;
+	padding-right:4px;*/
+	text-align:left;
+	font-size:12px;
+}
+/*当前位置*/
+.position {
+	background:url(../../images/main/position.png) left bottom repeat-x;
+	height:31px;
+	line-height:31px;
+	padding-left:10px;
+	text-align:left;
+	color:#999;
+	padding: 0px;
+	margin: 0px;
+}
+
+/*主DIV*/
+.content {
+	padding:5px;
+	margin:0 auto;
+	/*
+		padding:0 auto;
+		margin:0 5px;
+	*/
+	
+	text-align:left;
+}
+
+/*工具按钮*/
+.btnBox {
+	/*padding:0 0 5px 0;*/
+	margin-bottom: 8px;
+}
+.btnAll {
+	padding:3px 5px 0px 5px;
+	cursor:pointer;
+}
+
+
+/*列表Table*/
+table.borderTable,table.borderTable tr td {
+	border:1px #CCC solid;
+	border-collapse:collapse;
+}
+table.borderTable tr td {
+	padding: 0px 5px;
+	height: 23px;
+	line-height:23px;
+	text-align:center;
+	vertical-align: middle;
+}
+/*普通查询Table*/
+table.borderTable2,table.borderTable2 tr td {
+	border: 1px #CCC solid;
+	border-collapse: collapse;
+}
+table.borderTable2 tr td {
+	padding: 0px 5px;
+	height: 26px;
+	line-height:26px;
+	text-align: left;
+}
+table.borderTable2 tr td label {
+	color: #F00;
+}
+/*无边框Table*/
+/*指定td没有border-bottom: none;border-right: none;完成*/
+table.borderTable3,table.borderTable3 tr td {
+	border:none;
+	border-collapse: collapse;
+}
+table.borderTable3 tr td {
+	border-bottom: 1px #CCC solid;
+	border-right: 1px #CCC solid;
+	padding: 0px 5px;
+	height: 26px;
+	line-height:26px;
+	text-align: left;
+}
+
+/*tr,td背景*/
+.btnBg {
+	background:url(../../images/main/listTitle.png) left top repeat-x;
+	height:21px;
+}
+.tdBg {
+	background:#FBFBFB;
+	width: 100px;
+	text-align: left;
+	padding-right: 5px;
+}
+.tdBg2{
+	background:#FBFBFB;
+	width: 70px;
+}
+/*一些输入框长度*/
+.smallInput {
+	border: 1px solid #9bb4db;
+	/*background-color: #f3f9fc;*/
+	background-color:white;
+	width: 80px;
+	font-size: 12px;
+	height: 15px;
+	padding-top:2px;
+}
+.shortInput {
+	border: 1px solid #9bb4db;
+	/*background-color: #f3f9fc;*/
+	background-color:white;
+	width: 190px;
+	font-size: 12px;
+	height: 15px;
+	padding-top:2px;
+}
+.langInput {
+	border: 1px solid #9bb4db;
+	/*background-color: #f3f9fc;*/
+	background-color:white;
+	width: 365px;
+	font-size: 12px;
+	height: 15px;
+	padding-top:2px;
+}
+.smallSelectInput {
+	border: 1px solid #9bb4db;
+	/*background-color: #f3f9fc;*/
+	background-color:white;
+	width: 82px;
+	font-size: 12px;
+	height: 20px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.selectInput {
+	border: 1px solid #9bb4db;
+	/*background-color: #f3f9fc;*/
+	background-color:white;
+	width: 192px;
+	font-size: 12px;
+	height: 20px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.selectAll{
+	border: 1px solid #9bb4db;
+	background-color:white;
+	font-size: 12px;
+	height: 20px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.mutilSelectInput {
+	border: 1px solid #9bb4db;
+	/*background-color: #f3f9fc;*/
+	background-color:white;
+	width: 202px;
+	font-size: 12px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.area {
+	border: 1px solid #9bb4db;
+	/*background-color: #f3f9fc;*/
+	background-color:white;
+	font-size: 12px;
+	margin: 3px 0px;
+	padding:0px;
+	width: 365px;
+	height: 150px;
+}
+
+.langarea{
+	border: 1px solid #9bb4db;
+	/*background-color: #f3f9fc;*/
+	background-color:white;
+	font-size: 12px;
+	margin: 3px 0px;
+	width: 70%;
+	height: 300px;
+	padding:0px;
+}
+.maxarea{
+	border: 1px solid #9bb4db;
+	/*background-color: #f3f9fc;*/
+	background-color:white;
+	font-size: 12px;
+	margin: 3px 0px;
+	width:100%;
+	height: 340px;
+}
+.maxarea2 {
+	border: 1px solid #9bb4db;
+	/*background-color: #f3f9fc;*/
+	background-color:white;
+	font-size: 12px;
+	margin: 3px 0px;
+	width:100%;
+	height: 150px;
+}
+
+
+
+/*老样式*/
+table.oldTable,table.oldTable tr td {
+	border:1px solid #a8c7ce;
+	border-collapse: collapse;
+}
+table.oldTable tr td {
+	padding: 0px 5px;
+	height: 26px;
+	line-height:26px;
+	text-align: left;
+}
+table.oldTable tr td label {
+	color: #F00;
+}
+.oldBg {
+	height:20px;
+	background-color: #F3F8F7; 
+	text-align:center; 
+	font-weight:bold; 
+	font-size:12px;
+	color:#444444; 
+	letter-spacing:2px;
+}

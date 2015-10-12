@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.lzzyyy.xxk.user.pojo.User" table="user_info">
+		<id name="userId" type="string" column="userId">
+			<generator class="uuid"></generator>
+		</id>
+
+		<property name="userName" type="string" length="100"
+			not-null="true"></property>
+		<property name="userRealName" type="string" column="userRealName"
+			length="32" not-null="true"></property>
+			
+				<property name="userPwd" type="string" column="userpwd"
+			length="32" not-null="true"></property>
+
+
+		<property name="addDate" type="date" column="addDate"
+			not-null="true"></property>
+		
+		
+		<property name="pictureUrl" type="string" column="pictureUrl"
+			not-null="true" length="200"></property>
+
+
+		<!-- 反应一角色多个用户 -->
+		<many-to-one name="role" cascade="save-update">
+			<column name="roleId" length="32" />
+		</many-to-one>
+		<many-to-one name="team" cascade="save-update">
+			<column name="teamId" />
+		</many-to-one>
+
+		<set name="records" inverse="true"  cascade="all">
+			<key>
+				<column name="userId" />
+			</key>
+			<one-to-many class="com.lzzyyy.xxk.user.pojo.WorkRecord" />
+		</set>
+
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,12 @@
+package com.lzzyyy.xxk.user.dao.impl;
+
+
+import com.lzzyyy.xxk.user.dao.UserTeamDao;
+
+import com.lzzyyy.xxk.user.pojo.UserTeam;
+
+public class UserTeamDaoImpl extends EntityDaoImpl<UserTeam, Integer> implements
+		UserTeamDao {
+
+
+}

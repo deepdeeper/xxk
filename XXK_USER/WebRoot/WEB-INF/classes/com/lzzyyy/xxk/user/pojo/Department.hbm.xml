@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.lzzyyy.xxk.user.pojo.Department" table="Sys_dept">
+        <id name="deptId" type="string" column="deptId" length="32">
+            <generator class="uuid" />
+        </id>
+        <property name="deptName" type="string">
+            <column name="deptName" length="50" not-null="true" unique="true"/>
+        </property>
+        <property name="deptRemark" type="string">
+            <column name="deptRemark" length="200" />
+        </property>
+        
+     
+     
+        <!-- 设置部门父类部门 -->
+        <many-to-one name="parentDept" cascade="save-update">
+        	<column name="parentDeptId" length="32" />
+        </many-to-one>
+        
+        <!-- 本部门的所有子菜单,当删除本本部门时级联删除所有子部门 -->
+         <set name="childDept"  inverse="true" lazy="extra" cascade="all">
+        	<key>
+        		<column name="parentDeptId" length="32"/>
+        	</key>
+        	<one-to-many class="com.lzzyyy.xxk.user.pojo.Department"/>
+        </set>
+        
+     <set name="users" inverse="true" lazy="extra" cascade="save-update">
+			<key>
+				<column name="teamId" length="32" />
+			</key>
+			<one-to-many class="com.lzzyyy.xxk.user.pojo.User" />
+		</set>
+        
+        
+        
+      
+    </class>
+</hibernate-mapping>

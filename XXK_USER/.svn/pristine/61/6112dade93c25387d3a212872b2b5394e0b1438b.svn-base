@@ -1,0 +1,81 @@
+package com.lzzyyy.xxk.user.pojo;
+
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+public class User {
+	private String userId;
+	private String userName;
+	private String userRealName;
+	private String remark;
+	private SysRole role;
+	private Date addDate;
+	private UserTeam team;
+	private Set<WorkRecord> records = new HashSet<WorkRecord>();
+
+	public Date getAddDate() {
+		return addDate;
+	}
+
+	public void setAddDate(Date addDate) {
+		this.addDate = addDate;
+	}
+
+	public UserTeam getTeam() {
+		return team;
+	}
+
+	public void setTeam(UserTeam team) {
+		this.team = team;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserRealName() {
+		return userRealName;
+	}
+
+	public void setUserRealName(String userRealName) {
+		this.userRealName = userRealName;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public SysRole getRole() {
+		return role;
+	}
+
+	public void setRole(SysRole role) {
+		this.role = role;
+	}
+
+	public Set<WorkRecord> getRecords() {
+		return records;
+	}
+
+	public void setRecords(Set<WorkRecord> records) {
+		this.records = records;
+	}
+
+}
